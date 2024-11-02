@@ -157,38 +157,6 @@
             localStorage.removeItem('chatHistory');
             document.getElementById('chat-history').innerHTML = '';
         });
-
-        function saveChatHistory(scenario, conversation) {
-            let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
-            chatHistory.push({ scenario, conversation });
-            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-            loadChatHistory();
-        }
-
-        function loadChatHistory() {
-            const chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
-            const chatHistoryElement = document.getElementById('chat-history');
-            chatHistoryElement.innerHTML = '';
-            chatHistory.forEach((chat, index) => {
-                const chatItem = document.createElement('li');
-                chatItem.innerHTML = `<strong>Scenario:</strong> ${chat.scenario}`;
-                chatItem.addEventListener('click', () => displayFullChat(index));
-                chatHistoryElement.appendChild(chatItem);
-            });
-        }
-
-        function displayFullChat(index) {
-            const chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
-            const chat = chatHistory[index];
-            const chatContent = document.getElementById('chat-content');
-            chatContent.innerHTML = '';
-            chat.conversation.forEach(message => {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('message', message.sender === 'user' ? 'user-message' : 'bot-message');
-                messageElement.innerHTML = `<p>${message.message}</p>`;
-                chatContent.appendChild(messageElement);
-            });
-        }
     </script>
 </body>
 </html>
