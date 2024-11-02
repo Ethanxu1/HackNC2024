@@ -7,12 +7,13 @@
 #       - out of state and instate
 
 class StudentInterestCalculator:
-    def __init__(self, principal, rate=5.0, time=1):
+    def __init__(self, principal, disposable_income, rate=5.0, time=1):
         """
         Initialize the calculator with principal, rate, and time.
         Default interest rate is 5% and default time is 1 year.
         """
         self.principal = principal
+        self.disposable_income = disposable_income
         self.rate = rate
         self.time = time
 
@@ -33,7 +34,11 @@ class StudentInterestCalculator:
         Calculate monthly payment to repay the principal and interest over a given number of months.
         """
         interest = self.calculate_interest()
-        return (self.principal + interest) / number_of_months
+        monthly_payment = (self.principal + interest) / number_of_months
+        if monthly_payment < (disposable_income / 12):
+            return monthly_payment
+        else:
+            raise Exception("Calculated Monthly Payment exceeds amount of Disposable Income")
 
     def calculate_compound_interest(self, number_of_times_compounded_per_year):
         """
