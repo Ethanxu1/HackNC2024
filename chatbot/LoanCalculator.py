@@ -131,6 +131,12 @@ class StudentInterestCalculator:
         Set the time period in years.
         """
         self.time = time
+        
+    def set_disposable_income(self, disposable_income):
+        """
+        Get the annual disposable income.
+        """
+        self.disposable_income = disposable_income
 
     # Getters
     def get_principal(self):
@@ -150,7 +156,12 @@ class StudentInterestCalculator:
         Get the time period in years.
         """
         return self.time
-   
+        
+    def get_disposable_income(self):
+        """
+        Get the annual disposable income.
+        """
+        return self.disposable_income
 
 
 
