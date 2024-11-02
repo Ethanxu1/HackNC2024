@@ -31,12 +31,6 @@ prompts = {
     "fINny": "Hey there, what can I help you with?"
 }
 
-# User model
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=False)
-
 # Conversation model
 class Conversation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -53,52 +47,11 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return redirect(url_for('dashboard'))
-    return render_template('login.html')
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        user = User.query.filter_by(username=username).first()
-        if user and check_password_hash(user.password, password):
-            session['username'] = username
-            return redirect(url_for('dashboard'))
-        else:
-            return "Invalid credentials"
-    return render_template('login.html')
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        username = request.form['username']
-        existing_user = User.query.filter_by(username=username).first()
-        
-        if existing_user:
-            return "Username already taken. Please choose a different one."
-
-        password = generate_password_hash(request.form['password'], method='pbkdf2:sha256')
-        new_user = User(username=username, password=password)
-        db.session.add(new_user)
-        db.session.commit()
-        session['username'] = username
-        return redirect(url_for('dashboard'))
-    return render_template('register.html')
-
-@app.route('/logout')
-def logout():
-    session.pop('username', None)
-    return redirect(url_for('index'))
+    return redirect(url_for('dashboard'))
 
 @app.route('/dashboard')
 def dashboard():
-    if 'username' in session:
-        user = User.query.filter_by(username=session['username']).first()
-        conversations = Conversation.query.filter_by(user_id=user.id).all()
-        return render_template('dashboard.html', username=session['username'], conversations=conversations)
-    return redirect(url_for('login'))
+    return render_template('dashboard.html') 
 
 @app.route('/student-calculator.html', methods=['GET', 'POST'])
 def student_calculator():
@@ -151,9 +104,6 @@ def get_openai_response(user_input, scenario):
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    if 'username' not in session:
-        return jsonify({'response': 'Please log in to use the chat feature.'}), 403
-
     data = request.json
     scenario = data.get('scenario')
     message = data.get('message')
@@ -176,19 +126,6 @@ def chat():
     
     session['conversation'].append({'role': 'user', 'content': user_input})
     session['conversation'].append({'role': 'assistant', 'content': response})
-
-    # Save the conversation to the database
-    user = User.query.filter_by(username=session['username']).first()
-    if data.get('end_scenario'):
-        conversation = Conversation(
-            user_id=user.id,
-            scenario=scenario,
-            messages=json.dumps(session['conversation'])
-        )
-        db.session.add(conversation)
-        db.session.commit()
-        session.pop('conversation', None)
-        session.pop('chat_state', None)
 
     return jsonify({'response': response})
 
