@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Welcome, {{ username }}</h1>
+            <!-- <h1>Welcome, {{ username }}</h1> -->
             <button class="logout-btn" onclick="location.href='/logout'">Logout</button>
         </div>
         <div class="main-content">
@@ -26,14 +26,14 @@
                 <div class="form-group">
                     <label for="scenario">Choose a scenario:</label>
                     <select id="scenario" class="form-control">
-                        <option value="financial calculator">Financial Calculator</option>
+                       <option value="financial calculator">Financial Calculator</option>
                         <option value="disposable income">Disposable Income</option>
                         <option value="error">Error</option>
                         <option value="principal">Principal</option>
                         <option value="rate">rate</option>
                         <option value="time">Time</option>
                         <option value="fINny">FINny</option>
-                        <option value="other">Other</option>
+                        <option value="other">Other</option> 
                     </select>
                 </div>
                 <div class="chatbox">
@@ -147,7 +147,6 @@
         document.getElementById('endScenarioBtn').addEventListener('click', function () {
             if (currentConversation.length > 0) {
                 const scenario = document.getElementById('scenario').value;
-                saveChatHistory(scenario, currentConversation);
                 currentConversation = [];
                 document.getElementById('chat-content').innerHTML = '';
                 document.getElementById('message').value = '';
