@@ -12,3 +12,5 @@ Project idea: A UNC Student’s guide to finance
 - [ ]  Student discounts
 - [ ]  Credit Score
 - [ ]  Budgeting/ Financial goal setting
+
+UI/UX - Color Hunt (color palette). Hamburger Menu.
