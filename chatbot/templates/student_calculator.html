@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Loan Calculator</title>
+</head>
+<body>
+    <h1>Student Loan Calculator</h1>
+    <form id="calculatorForm">
+        <label for="principal">Principal Amount:</label>
+        <input type="number" id="principal" name="principal" required>
+
+        <label for="disposable_income">Disposable Income:</label>
+        <input type="number" id="disposable_income" name="disposable_income" required>
+
+        <label for="rate">Interest Rate (%):</label>
+        <input type="number" id="rate" name="rate" value="5.0">
+
+        <label for="time">Time (years):</label>
+        <input type="number" id="time" name="time" value="1">
+
+        <label for="number_of_months">Repayment Period (months):</label>
+        <input type="number" id="number_of_months" name="number_of_months" value="12">
+
+        <button type="button" onclick="calculateLoan()">Calculate</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        async function calculateLoan() {
+            const form = document.getElementById('calculatorForm');
+            const formData = new FormData(form);
+
+            const data = {
+                principal: formData.get('principal'),
+                disposable_income: formData.get('disposable_income'),
+                rate: formData.get('rate'),
+                time: formData.get('time'),
+                number_of_months: formData.get('number_of_months')
+            };
+
+            const response = await fetch('/student_calculator', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            const resultDiv = document.getElementById('result');
+
+            if (response.ok) {
+                resultDiv.innerHTML = `<p>Monthly Payment: $${result.monthly_payment.toFixed(2)}</p>
+                                       <p>Total Amount: $${result.total_amount.toFixed(2)}</p>`;
+            } else {
+                resultDiv.innerHTML = `<p>Error: ${result.error}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

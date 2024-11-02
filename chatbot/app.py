@@ -4,7 +4,9 @@ import logging
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
-from LoanCalculator.py import StudentInterestCalculator 
+from LoanCalculator import StudentInterestCalculator
+
+ 
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -99,15 +101,31 @@ def dashboard():
         return render_template('dashboard.html', username=session['username'], conversations=conversations)
     return redirect(url_for('login'))
 
-@app.route('/calculate', methods=['POST'])
-def calculate():
-    data = request.get_json()
-    principal = float(data['principal'])
-    disposable_income = float(data['disposableIncome'])
-    rate = float(data.get('rate', 5.0))
-    time = float(data.get('time', 1))
+@app.route('/LoanCalculator', methods=['GET', 'POST'])
+def student_calculator():
+    if request.method == 'POST':
+        data = request.json
+        principal = float(data['principal'])
+        disposable_income = float(data['disposable_income'])
+        rate = float(data.get('rate', 5.0))
+        time = float(data.get('time', 1))
+        
+        # Create an instance of the calculator
+        calculator = StudentInterestCalculator(principal, disposable_income, rate, time)
+        
+        try:
+            monthly_payment = calculator.calculate_monthly_payment(int(data.get('number_of_months', 12)))
+            total_amount = calculator.calculate_total_amount()
+            
+            return jsonify({
+                "monthly_payment": monthly_payment,
+                "total_amount": total_amount
+            })
+        except Exception as e:
+            return jsonify({"error": str(e)}), 400
+    
+    return render_template('student_calculator.html')
 
-    calculator = StudentInterestCalculator(principal, disposable_income, rate, time)
 
 
 def get_openai_response(user_input, scenario):

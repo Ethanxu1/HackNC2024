@@ -35,10 +35,11 @@ class StudentInterestCalculator:
         """
         interest = self.calculate_interest()
         monthly_payment = (self.principal + interest) / number_of_months
-        if monthly_payment < (disposable_income / 12):
+        if monthly_payment < (self.disposable_income / 12):
             return monthly_payment
         else:
             raise Exception("Calculated Monthly Payment exceeds amount of Disposable Income")
+
 
     def calculate_compound_interest(self, number_of_times_compounded_per_year):
         """
