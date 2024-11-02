@@ -101,7 +101,7 @@ def dashboard():
         return render_template('dashboard.html', username=session['username'], conversations=conversations)
     return redirect(url_for('login'))
 
-@app.route('/LoanCalculator', methods=['GET', 'POST'])
+@app.route('/student-calculator.html', methods=['GET', 'POST'])
 def student_calculator():
     if request.method == 'POST':
         data = request.json
