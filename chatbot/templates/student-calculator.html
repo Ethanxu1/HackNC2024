@@ -4,29 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Loan Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Student Loan Calculator</h1>
-    <form id="calculatorForm">
-        <label for="principal">Principal Amount:</label>
-        <input type="number" id="principal" name="principal" required>
+    <div class="container">
+        <h1>Student Loan Calculator</h1>
+        <form id="calculatorForm">
+            <label for="principal">Principal Amount ($):</label>
+            <input type="number" id="principal" name="principal" required>
 
-        <label for="disposable_income">Disposable Income:</label>
-        <input type="number" id="disposable_income" name="disposable_income" required>
+            <label for="disposable_income">Disposable Income ($):</label>
+            <input type="number" id="disposable_income" name="disposable_income" required>
 
-        <label for="rate">Interest Rate (%):</label>
-        <input type="number" id="rate" name="rate" value="5.0">
+            <label for="rate">Interest Rate (%):</label>
+            <input type="number" id="rate" name="rate" value="5.0" step="0.1" required>
 
-        <label for="time">Time (years):</label>
-        <input type="number" id="time" name="time" value="1">
+            <label for="time">Time (years):</label>
+            <input type="number" id="time" name="time" value="1" min="1" required>
 
-        <label for="number_of_months">Repayment Period (months):</label>
-        <input type="number" id="number_of_months" name="number_of_months" value="12">
+            <label for="number_of_months">Repayment Period (months):</label>
+            <input type="number" id="number_of_months" name="number_of_months" value="12" min="1" required>
 
-        <button type="button" onclick="calculateLoan()">Calculate</button>
-    </form>
+            <button type="button" onclick="calculateLoan()">Calculate</button>
+        </form>
 
-    <div id="result"></div>
+        <div id="result"></div>
+    </div>
 
     <script>
         async function calculateLoan() {
@@ -34,11 +37,11 @@
             const formData = new FormData(form);
 
             const data = {
-                principal: formData.get('principal'),
-                disposable_income: formData.get('disposable_income'),
-                rate: formData.get('rate'),
-                time: formData.get('time'),
-                number_of_months: formData.get('number_of_months')
+                principal: parseFloat(formData.get('principal')),
+                disposable_income: parseFloat(formData.get('disposable_income')),
+                rate: parseFloat(formData.get('rate')),
+                time: parseFloat(formData.get('time')),
+                number_of_months: parseInt(formData.get('number_of_months'))
             };
 
             const response = await fetch('/student_calculator', {
