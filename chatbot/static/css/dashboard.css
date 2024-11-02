@@ -179,6 +179,22 @@ textarea {
     background-color: #2ecc71;
 }
 
+.sidebar .btn {
+    display: inline-block; /* Allows padding and margins to apply */
+    padding: 10px 15px; /* Button padding */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    margin-top: 10px; /* Space above the button */
+}
+
+.sidebar .btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
 .message {
     margin-bottom: 10px;
     padding: 10px;

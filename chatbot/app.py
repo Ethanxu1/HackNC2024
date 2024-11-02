@@ -4,6 +4,7 @@ import logging
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
+from LoanCalculator.py import StudentInterestCalculator 
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -97,6 +98,17 @@ def dashboard():
         conversations = Conversation.query.filter_by(user_id=user.id).all()
         return render_template('dashboard.html', username=session['username'], conversations=conversations)
     return redirect(url_for('login'))
+
+@app.route('/calculate', methods=['POST'])
+def calculate():
+    data = request.get_json()
+    principal = float(data['principal'])
+    disposable_income = float(data['disposableIncome'])
+    rate = float(data.get('rate', 5.0))
+    time = float(data.get('time', 1))
+
+    calculator = StudentInterestCalculator(principal, disposable_income, rate, time)
+
 
 def get_openai_response(user_input, scenario):
     headers = {
