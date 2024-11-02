@@ -124,7 +124,7 @@ def student_calculator():
         except Exception as e:
             return jsonify({"error": str(e)}), 400
     
-    return render_template('student_calculator.html')
+    return render_template('student-calculator.html')
 
 
 
