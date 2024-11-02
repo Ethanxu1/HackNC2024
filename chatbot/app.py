@@ -21,15 +21,13 @@ logging.basicConfig(level=logging.INFO)
 
 # Define detailed prompts for assisting a wealth manager with clients
 prompts = {
-    "initial_consultation": "Hi there! I'm here to help with your client's financial planning needs. What are you looking for assistance with today? We can explore investment options, retirement strategies, or ways to optimize their taxes. Feel free to share any initial thoughts or questions you have.",
-    "financial_goal_setting": "Let's chat about your client's financial goals. Are they saving for something specific like a new home, education, or retirement? Or perhaps they have other short-term or long-term targets in mind? Share any details you have, and we can start planning.",
-    "tax_optimization": "Would you like to look into tax-saving opportunities for your client? We can review their current tax situation and explore ways to improve it. You can tell me a bit about their income, tax bracket, or any tax strategies they’re currently using or interested in.",
-    "retirement_planning": "Let's talk about your client's retirement plans. Do they have a target retirement age or a vision for their retirement lifestyle? We can work on how much they need to save and discuss their current savings and plans. Share what you can, and we'll go from there.",
-    "estate_planning": "Does your client have any estate planning needs? We can review and update their plans to ensure they align with their wishes. Tell me about their assets, beneficiaries, or any specific changes they want to make. Do they have any wills, trusts, or other documents?",
-    "investment_recommendations": "I can help with personalized investment recommendations for your client. What is their comfort level with risk and how long do they plan to invest? Are there specific funds or asset classes they’re interested in, or particular performance metrics they focus on?",
-    "budgeting": "Are you working on creating a budget for your client? Let's start by discussing their income and monthly expenses. We can then set financial goals and create a plan to manage their spending. Share any details you have about their financial situation.",
-    "debt_management": "Is your client looking for ways to manage and reduce their debt? We can talk about their current debts and develop a strategy to pay them off efficiently. Let me know about the types of debt, amounts, interest rates, and any repayment plans they have.",
-    "other": "I'm here to assist you with any other financial inquiries. Please provide details about what your client needs help with."
+    "financial calculator": "Hi there! I'm FINram (FINny), here to help with your financial planning needs as a student. How can I help you navigate the calculator today? Feel free to ask about any of the features. I hope that this calculator is helpful!",
+    "disposable income": "Let's talk about your disposable income. The calculator is asking for how much total money you are willing to allot to student loan repayments annually. I would suggest putting different amounts to test different plans until you find your optimal one. Not all repayment plans work with all amounts of disposable income.",
+    "error": "Let me see what's going on here. It seems that you may have selected a repayment plan that is too short to pay off your loan with the current specified disposable income. Try changing the length of your plan or the available disposable income.",
+    "principal": "The principal is the amount of debt you currently have.",
+    "rate": "If you know what your interest rate is, you should input it under the rate column. Otherwise, I have a default rate of 5.00% set up for use!",
+    "time": "Here is what you can do with the time feature. I put in a default value of repayment of loan within one year, but you can change the values in this column to create repayment plans of different lengths (and find their respective monthly payments!)",
+    "other": "I'm happy to help you with more financial questions you may have as a UNC student. However, I am still learning about such topics and would suggest you refer to the UNC Scholarships and Student Aid page first."
 }
 
 # User model
