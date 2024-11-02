@@ -28,7 +28,7 @@ prompts = {
     "rate": "If you know what your interest rate is, you should input it under the rate column. Otherwise, I have a default rate of 5.00% set up for use!",
     "time": "Here is what you can do with the time feature. I put in a default value of repayment of loan within one year, but you can change the values in this column to create repayment plans of different lengths (and find their respective monthly payments!)",
     "other": "I'm happy to help you with more financial questions you may have as a UNC student. However, I am still learning about such topics and would suggest you refer to the UNC Scholarships and Student Aid page first.",
-    "FINny": "Hey there, what can I help you with?"
+    "fINny": "Hey there, what can I help you with?"
 }
 
 # User model
