@@ -52,7 +52,7 @@ def dashboard():
 
 @app.route('/resources.html', methods=['GET', 'POST'])
 def resources():
-    if request.method = 'POST':
+    if request.method == 'POST':
         data = request.json
         item = data['item']
         features = data['features']
