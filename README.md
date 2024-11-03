@@ -12,21 +12,14 @@ Project idea: A UNC Student’s guide to finance
 - [ ]  Budgeting/ Financial goal setting (budgeting)
 
 How to run the code:
-
 run app.py 
 
 dependancies:
-
 flask
-
 requests
-
 logging
-
 flask_sqlalchemy
-
 bs4
-
 Our Usage:
 
 First, we used financial formulas we found online (such as compound interest calculation) in our calculator functions. Our calculator was the main feature, and we improved the formatting of the website (using our code for the front end) by asking ChatGPT how to format the text boxes to look a specific way. For our chatbot, it puts calls through to the ChatGPT API to inform users on how to navigate the calculator we built, along with providing further resources if they are interested. We had 2 secondary features that linked to resources and a search feature for discounted items (we web scraped eBay). We also put in our front end code for the search function to ChatGPT to format it further, but we created most of the code for the front-end overall. We used the FLASK framework in Python.
