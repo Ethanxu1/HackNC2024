@@ -182,3 +182,7 @@ textarea {
     color: #333;
     align-self: flex-start;
 }
+
+.input-field {
+    padding: 15px 5px;
+}

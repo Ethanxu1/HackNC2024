@@ -3,7 +3,7 @@ import requests
 import logging
 from flask_sqlalchemy import SQLAlchemy
 from LoanCalculator import StudentInterestCalculator
-
+import Resources
  
 
 app = Flask(__name__)
@@ -50,7 +50,12 @@ def index():
 def dashboard():
     return render_template('dashboard.html') 
 
-@app.route('/student-calculator.html', methods=['GET', 'POST'])
+@app.route('/resources.html', methods=['GET', 'POST'])
+def resources():
+    
+    return render_template('resources.html')
+
+@app.route('/calculate-loan', methods=['POST'])
 def student_calculator():
     if request.method == 'POST':
         data = request.json
@@ -75,6 +80,11 @@ def student_calculator():
     
     return render_template('student-calculator.html')
 
+def adequateInfo(user_input):
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {api_key}'
+    }
 
 
 def get_openai_response(user_input, scenario):

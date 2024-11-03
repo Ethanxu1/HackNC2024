@@ -17,21 +17,31 @@
                 <h3>"Never Fail Financial Literacy Again"</h3>
                 <h1>Student Loan Calculator</h1>
     <form id="calculatorForm">
-        <label for="principal">Principal Amount:</label>
-        <input type="number" id="principal" name="principal" required>
-        <br>
-        <label for="disposable_income">Disposable Income:</label>
-        <input type="number" id="disposable_income" name="disposable_income" required>
-        <br>
-        <label for="rate">Interest Rate (%):</label>
-        <input type="number" id="rate" name="rate" value="5.0">
-        <br>
-        <label for="time">Time (years):</label>
-        <input type="number" id="time" name="time" value="1">
-        <br>
-        <label for="number_of_months">Repayment Period (months):</label>
-        <input type="number" id="number_of_months" name="number_of_months" value="12">
-        <br>
+        <div class="input-field">
+            <label for="principal">Principal Amount:</label>
+            <input type="number" id="principal" name="principal" required>    
+        </div>
+
+        <div class="input-field">
+            <label for="disposable_income">Disposable Income:</label>
+            <input type="number" id="disposable_income" name="disposable_income" required>    
+        </div>
+
+        <div class="input-field">
+            <label for="rate">Interest Rate (%):</label>
+            <input type="number" id="rate" name="rate" value="5.0">    
+        </div>
+
+        <div class="input-field">
+            <label for="time">Time (years):</label>
+            <input type="number" id="time" name="time" value="1">    
+        </div>
+
+        <div class="input-field">
+            <label for="number_of_months">Repayment Period (months):</label>
+            <input type="number" id="number_of_months" name="number_of_months" value="12">    
+        </div>
+
         <button type="button" onclick="calculateLoan()">Calculate</button>
     </form>
 
@@ -60,7 +70,7 @@
                     <div class="chat-input">
                         <textarea id="message" class="form-control" placeholder="Type your message here..."></textarea>
                         <button id="sendBtn" class="btn btn-primary">Send</button>
-                        <button id="resources" class="btn btn-primary">Resources</button>
+                        <a href="/resources.html" id="resources" class="btn btn-primary">Resources</a>
                     </div>
                 </div>
             </div>
@@ -183,7 +193,7 @@
                 number_of_months: formData.get('number_of_months')
             };
 
-            const response = await fetch('/student-calculator.html', {
+            const response = await fetch('/calculate-loan', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -193,7 +203,6 @@
             
             const result = await response.json();
             const resultDiv = document.getElementById('result');
-            console.log("checkpoint reached ---------------------------------");
 
             if (response.ok) {
                 resultDiv.innerHTML = `<p>Monthly Payment: $${result.monthly_payment.toFixed(2)}</p>
