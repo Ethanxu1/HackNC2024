@@ -20,7 +20,6 @@ api_key = os.getenv('OPENAI_KEY')
 # Define detailed prompts for assisting a wealth manager with clients
 prompts = {
     "financial calculator": "Hi there! I'm FINram (FINny), here to help with your financial planning needs as a student. How can I help you navigate the calculator today? Feel free to ask about any of the features. I hope that this calculator is helpful!",
-    "disposable income": "Let's talk about your disposable income. The calculator is asking for how much total money you are willing to allot to student loan repayments annually. I would suggest putting different amounts to test different plans until you find your optimal one. Not all repayment plans work with all amounts of disposable income.",
     "Help with errors": "Let me see what's going on here. It seems that you may have selected a repayment plan that is too short to pay off your loan with the current specified disposable income. Try changing the length of your plan or the available disposable income.",
     "principal": "The principal is the amount of debt you currently have.",
     "rate": "If you know what your interest rate is, you should input it under the rate column. Otherwise, I have a default rate of 5.00 percent set up for use!",
