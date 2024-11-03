@@ -1,6 +1,6 @@
 body {
     background-color: #56a0d3;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Gill Sans', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -28,47 +28,42 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 0;
+    font-family: 'Lilita One', Static;
 }
 
-.logout-btn {
-    padding: 10px 20px;
-    background-color: #ff4b5c;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 14px;
+
+.header h1, .header h2 {
+    color: #ffffff; 
+    font-family: 'Lilita One', Static;
+    font-size: 60px;
 }
 
-.logout-btn:hover {
-    background-color: #ff6b7c;
-}
+
 
 .main-content {
     display: flex;
     flex: 1;
     justify-content: space-between;
     height: 100%;
+    margin-top: 0;
 }
 
 .sidebar {
-    width: 25%;
+    width: 35%;
     background-color: #f4f7f6;
     border-radius: 1.5em;
     padding: 20px;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-    /*display: flex;
-    flex-direction: column;*/
     height: 90%;
     overflow-y: auto;
 }
 
-.sidebar h2 {
-    color: #27ae60;
-    font-size: 18px;
+.sidebar h1 {
+    color: #4295ce;
+    font-size: 25px;
     margin-bottom: 10px;
+    font-family: 'Lilita One', Static;
 }
 
 .chat-history {
@@ -87,22 +82,6 @@ body {
     cursor: pointer;
 }
 
-.clear-chats-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #ff4b5c;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.clear-chats-btn:hover {
-    background-color: #ff6b7c;
-}
 
 .main {
     flex: 1;
@@ -118,11 +97,11 @@ body {
 .form-control {
     width: 100%;
     padding: 10px;
-    border: 2px solid rgba(39, 174, 96, 0.1);
+    border: 2px solid rgba(69, 112, 139, 0.1);
     border-radius: 20px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
-    background: rgba(39, 174, 96, 0.04);
+    background: rgba(69, 112, 139, 0.1);
 }
 
 .chatbox {
@@ -134,6 +113,8 @@ body {
     overflow: hidden;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
     height: 90%;
+    font-family: 'Gill Sans', sans-serif;
+    
 }
 
 .chat-content {
@@ -141,6 +122,7 @@ body {
     padding: 10px;
     overflow-y: auto;
     background-color: #f9f9f9;
+    font-family: 'Gill Sans', sans-serif;
 }
 
 .chat-input {
@@ -148,50 +130,52 @@ body {
     padding: 10px;
     border-top: 1px solid #ddd;
     background-color: #fff;
+    font-family: 'Gill Sans', sans-serif;
 }
 
 textarea {
     flex: 1;
     padding: 10px;
-    border: 2px solid rgba(39, 174, 96, 0.1);
+    border: 2px solid rgba(69, 112, 139, 0.1);
     border-radius: 20px;
     resize: none;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Gill Sans', sans-serif;
     font-size: 14px;
-    background: rgba(39, 174, 96, 0.04);
+    background: rgba(69, 112, 139, 0.04);
 }
 
 .btn {
     margin-left: 10px;
     padding: 10px 20px;
-    background-color: #27ae60;
+    background-color: #4295ce;
     color: #fff;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Gill Sans', sans-serif;
     font-size: 14px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
     transition: background 0.3s;
 }
 
 .btn:hover {
-    background-color: #2ecc71;
+    background-color: #153850
 }
 
 .sidebar .btn {
     display: inline-block; /* Allows padding and margins to apply */
     padding: 10px 15px; /* Button padding */
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #4295ce; /* Bootstrap primary color */
     color: white; /* Text color */
     text-align: center; /* Center text */
     border-radius: 5px; /* Rounded corners */
     text-decoration: none; /* Remove underline */
     margin-top: 10px; /* Space above the button */
+    font-family: 'Gill Sans', sans-serif;
 }
 
 .sidebar .btn:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: #153850; /* Darker Carolina Blue on Hover */
 }
 
 
@@ -204,7 +188,7 @@ textarea {
 }
 
 .user-message {
-    background-color: #27ae60;
+    background-color: #2e7aaf;
     color: #fff;
     align-self: flex-end;
 }
