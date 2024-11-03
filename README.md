@@ -12,15 +12,19 @@ Project idea: A UNC Student’s guide to finance
 - [ ]  Budgeting/ Financial goal setting (budgeting)
 
 How to run the code:
+
 run app.py 
 
-hgkgkgkgk
-
 dependancies:
+
 flask
+
 requests
+
 logging
+
 flask_sqlalchemy
+
 bs4
 
 Our Usage:
