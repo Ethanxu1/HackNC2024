@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <title>Resources</title>
     <style>
@@ -109,5 +110,54 @@
         </div>
     </div>
 
+=======
+    <title>Student Loan Calculator</title>
+</head>
+<body>
+    
+    <form id="resourcesForm">
+        <div class="input-field">
+            <label for="item">Item: </label>
+            <input type="text">    
+        </div>
+
+        <div class="input-field">
+            <label for="features">Key features (Be concise): </label>
+            <input type="text">
+            <button type="button" onclick="search()">Search</button>
+        </div>
+
+        <div id="result"></div>
+    </form>
+    
+    <script>
+        async function Search() {
+            const form = document.getElementById('resourcesForm');
+            const formData = new FormData(form);
+            const data = {
+                item: formData.get('item'), 
+                features: formData.get('features')
+            };
+
+            const response = await fetch('/resources.html', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, 
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            const resultDiv = document.getElementById('result');     
+            
+            if (response.ok) {
+                resultDiv.innerHTML = `<p>Item Name: $${result.itemName}</p>
+                                       <p>Link: $${result.itemLink}</p>`;
+            } else {
+                resultDiv.innerHTML = `<p>Error: ${result.error}</p>`;
+            }
+        }
+    </script>
+>>>>>>> 6836683ab0ed2b95c2bfb4df307763ccc798d900
 </body>
 </html>

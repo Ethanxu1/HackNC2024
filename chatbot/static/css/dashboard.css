@@ -197,4 +197,11 @@ textarea {
     background-color: #e9ecef;
     color: #333;
     align-self: flex-start;
+<<<<<<< HEAD
+=======
+}
+
+.input-field {
+    padding: 15px 5px;
+>>>>>>> 6836683ab0ed2b95c2bfb4df307763ccc798d900
 }
