@@ -9,7 +9,7 @@
     
     <form id="resourcesForm">
         <div class="input-field">
-            <label for="item name">Item: </label>
+            <label for="item">Item: </label>
             <input type="text">    
         </div>
 
@@ -27,7 +27,7 @@
             const form = document.getElementById('resourcesForm');
             const formData = new FormData(form);
             const data = {
-                item: formData.get('item name'), 
+                item: formData.get('item'), 
                 features: formData.get('features')
             };
 

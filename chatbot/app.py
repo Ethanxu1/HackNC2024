@@ -52,7 +52,15 @@ def dashboard():
 
 @app.route('/resources.html', methods=['GET', 'POST'])
 def resources():
-    
+    if request.method = 'POST':
+        data = request.json
+        item = data['item']
+        features = data['features']
+
+        resource = Resources(item)
+        soup = resource.get_data()
+        products = resource.parse(soup)
+        
     return render_template('resources.html')
 
 @app.route('/calculate-loan', methods=['POST'])

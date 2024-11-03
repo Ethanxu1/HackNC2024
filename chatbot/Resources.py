@@ -21,7 +21,22 @@ class Resources:
             # Extract the product title
             title_tag = item.find('span', {'role': 'heading'})
             title = title_tag.text.strip() if title_tag else 'No title found'
+
+            link_tag = item.find('a', {'class': 's-item__link'})
+            link = link_tag['href'] if link_tag else 'No link found' 
             
+            request = requests.get(link)
+            s = BeautifulSoup(request.text, 'html.parser')
+            
+            attributes = []
+            div_tag = s.select_one('div[data-testid="ux-layout-section-evo__item"]')
+            if div_tag:
+                span_tag = div_tag.find_all('span', {'class': 'ux-textspans'})
+                attributes = [span.text.strip() for span in span_tag if span]
+            else:
+                attributes = ['No text found']
+   
+
             # Extract the product price
             price_tag = item.find('span', {'class': 's-item__price'})
             price = price_tag.text.strip() if price_tag else 'No price found'
@@ -29,9 +44,11 @@ class Resources:
             # Append the product details to the list
             product_list.append({
                 'title': title,
-                'price': price
+                'price': price,
+                'link': link,
+                'attributes': str(attributes).lower
             })
 
-        # Print the results
-        for product in product_list:
-            print(product)
+        return product_list
+
+    
