@@ -15,8 +15,28 @@
             <div class="sidebar">
                 <h1>FLUNC - Financial Literacy at UNC</h1>
                 <h3>"Never Fail Financial Literacy Again"</h3>
-                <ul id="chat-history" class="chat-history"></ul>
-                <a href="/student-calculator.html" class="btn btn-secondary">Student Loan Calculator</a>
+                <h1>Student Loan Calculator</h1>
+    <form id="calculatorForm">
+        <label for="principal">Principal Amount:</label>
+        <input type="number" id="principal" name="principal" required>
+        <br>
+        <label for="disposable_income">Disposable Income:</label>
+        <input type="number" id="disposable_income" name="disposable_income" required>
+        <br>
+        <label for="rate">Interest Rate (%):</label>
+        <input type="number" id="rate" name="rate" value="5.0">
+        <br>
+        <label for="time">Time (years):</label>
+        <input type="number" id="time" name="time" value="1">
+        <br>
+        <label for="number_of_months">Repayment Period (months):</label>
+        <input type="number" id="number_of_months" name="number_of_months" value="12">
+        <br>
+        <button type="button" onclick="calculateLoan()">Calculate</button>
+    </form>
+
+    <div id="result"></div>
+
 
 
             </div>
