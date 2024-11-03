@@ -31,20 +31,6 @@ body {
     margin-bottom: 20px;
 }
 
-.logout-btn {
-    padding: 10px 20px;
-    background-color: #ff4b5c;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 14px;
-}
-
-.logout-btn:hover {
-    background-color: #ff6b7c;
-}
 
 .main-content {
     display: flex;
@@ -87,22 +73,6 @@ body {
     cursor: pointer;
 }
 
-.clear-chats-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #ff4b5c;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.clear-chats-btn:hover {
-    background-color: #ff6b7c;
-}
 
 .main {
     flex: 1;

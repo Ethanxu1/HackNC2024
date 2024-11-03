@@ -10,14 +10,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <!-- <h1>Welcome, {{ username }}</h1> -->
-            <button class="logout-btn" onclick="location.href='/logout'">Logout</button>
         </div>
         <div class="main-content">
             <div class="sidebar">
-                <h2>Saved Chats</h2>
+                <h1>FLUNC - Financial Literacy at UNC</h1>
+                <h3>"Never Fail Financial Literacy Again"</h3>
                 <ul id="chat-history" class="chat-history"></ul>
-                <button id="clearChatsBtn" class="clear-chats-btn">Clear All Chats</button>
                 <a href="/student-calculator.html" class="btn btn-secondary">Student Loan Calculator</a>
 
 
@@ -105,10 +103,10 @@
                     botMessage.innerHTML = `<p>${data.response}</p>`;
                     document.getElementById('chat-content').appendChild(botMessage);
 
-                    // Add to current conversation
+                    // Add additional enquiries
                     currentConversation.push({ sender: 'bot', message: data.response });
 
-                    // Scroll to the latest message
+                    // Scroll to next message
                     document.getElementById('chat-content').scrollTop = document.getElementById('chat-content').scrollHeight;
                 })
                 .catch(error => console.error('Error:', error));
@@ -119,7 +117,7 @@
             document.getElementById('message').value = '';
             currentConversation = [];
 
-            // Automatically display the prompt for the selected scenario
+            // Get prompt to display for each subsequent scenario
             const scenario = this.value;
             fetch('/chat', {
                 method: 'POST',
@@ -135,10 +133,10 @@
                     botMessage.innerHTML = `<p>${data.response}</p>`;
                     document.getElementById('chat-content').appendChild(botMessage);
 
-                    // Add to current conversation
+                    // Add additional enquiries
                     currentConversation.push({ sender: 'bot', message: data.response });
 
-                    // Scroll to the latest message
+                    // Scroll to next message
                     document.getElementById('chat-content').scrollTop = document.getElementById('chat-content').scrollHeight;
                 })
                 .catch(error => console.error('Error:', error));
@@ -153,10 +151,7 @@
             }
         });
 
-        document.getElementById('clearChatsBtn').addEventListener('click', function () {
-            localStorage.removeItem('chatHistory');
-            document.getElementById('chat-history').innerHTML = '';
-        });
+
     </script>
 </body>
 </html>

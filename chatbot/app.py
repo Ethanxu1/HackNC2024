@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify, render_template, session, redirect, u
 import requests
 import logging
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from LoanCalculator import StudentInterestCalculator
 
@@ -16,8 +15,6 @@ db = SQLAlchemy(app)
 # Your OpenAI API key
 api_key = "sk-proj-7bLYALOdq524pvA9UQ4sT3BlbkFJoGws4ktP1CQljV0d0OQ5"
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
 
 # Define detailed prompts for assisting a wealth manager with clients
 prompts = {
@@ -119,13 +116,6 @@ def chat():
 
     user_input = message
     response = get_openai_response(user_input, scenario)
-
-    # Save the conversation to the session
-    if 'conversation' not in session:
-        session['conversation'] = []
-    
-    session['conversation'].append({'role': 'user', 'content': user_input})
-    session['conversation'].append({'role': 'assistant', 'content': response})
 
     return jsonify({'response': response})
 
