@@ -14,6 +14,8 @@ Project idea: A UNC Student’s guide to finance
 How to run the code:
 run app.py 
 
+hgkgkgkgk
+
 dependancies:
 flask
 requests
