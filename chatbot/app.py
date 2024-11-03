@@ -3,7 +3,7 @@ import requests
 import logging
 from flask_sqlalchemy import SQLAlchemy
 from LoanCalculator import StudentInterestCalculator
-import Resources
+from Search import Search
  
 
 app = Flask(__name__)
@@ -27,6 +27,9 @@ prompts = {
     "FINny": "Hey there, what can I help you with?",
     "authors": "I, FINny, am the result of the efforts of Akshara, Ethan, Mihika, and Shourish. They hope you found this site (prototype) helpful!"
 }
+class User(db.Model):
+    __tablename__ = 'user'
+    id = db.Column(db.Integer, primary_key=True)
 
 # Conversation model
 class Conversation(db.Model):
@@ -57,11 +60,38 @@ def resources():
         item = data['item']
         features = data['features']
 
-        resource = Resources(item)
+        resource = Search(item)
         soup = resource.get_data()
         products = resource.parse(soup)
         
     return render_template('resources.html')
+
+@app.route('/search.html', methods=['GET', 'POST'])
+def search():
+    print("method ran")
+    if request.method == 'POST':
+        print("Starting scrape")
+        data = request.json
+        item = data['item']
+        features = data['features']
+
+        resource = Search(item)
+        soup = resource.get_data()
+        products = resource.parse(soup)
+        selectedProducts = []
+        
+        print("Parsing array ...")
+        for product in products:
+            print(product['attributes'])
+            # for feature in features:
+            #     if feature.lower in product['attributes']:
+            #         selectedProducts.append(product)
+            #         break
+        print("finished parsing file")
+        print(str(selectedProducts))
+    else:
+        print("error, method not post")
+    return render_template('search.html')
 
 @app.route('/calculate-loan', methods=['POST'])
 def student_calculator():

@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-class Resources:
+class Search:
 
     def __init__(self, item):
         self.item = item
