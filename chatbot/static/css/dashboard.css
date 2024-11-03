@@ -40,7 +40,7 @@ body {
 }
 
 .sidebar {
-    width: 25%;
+    width: 35%;
     background-color: #f4f7f6;
     border-radius: 1.5em;
     padding: 20px;
@@ -50,7 +50,7 @@ body {
 }
 
 .sidebar h1 {
-    color: #2e7aaf;
+    color: #4295ce;
     font-size: 25px;
     margin-bottom: 10px;
 }
@@ -150,7 +150,7 @@ textarea {
 .sidebar .btn {
     display: inline-block; /* Allows padding and margins to apply */
     padding: 10px 15px; /* Button padding */
-    background-color: #2e7aaf; /* Bootstrap primary color */
+    background-color: #4295ce; /* Bootstrap primary color */
     color: white; /* Text color */
     text-align: center; /* Center text */
     border-radius: 5px; /* Rounded corners */

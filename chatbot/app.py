@@ -21,10 +21,11 @@ prompts = {
     "disposable income": "Let's talk about your disposable income. The calculator is asking for how much total money you are willing to allot to student loan repayments annually. I would suggest putting different amounts to test different plans until you find your optimal one. Not all repayment plans work with all amounts of disposable income.",
     "error": "Let me see what's going on here. It seems that you may have selected a repayment plan that is too short to pay off your loan with the current specified disposable income. Try changing the length of your plan or the available disposable income.",
     "principal": "The principal is the amount of debt you currently have.",
-    "rate": "If you know what your interest rate is, you should input it under the rate column. Otherwise, I have a default rate of 5.00% set up for use!",
+    "rate": "If you know what your interest rate is, you should input it under the rate column. Otherwise, I have a default rate of 5.00 percent set up for use!",
     "time": "Here is what you can do with the time feature. I put in a default value of repayment of loan within one year, but you can change the values in this column to create repayment plans of different lengths (and find their respective monthly payments!)",
     "other": "I'm happy to help you with more financial questions you may have as a UNC student. However, I am still learning about such topics and would suggest you refer to the UNC Scholarships and Student Aid page first.",
-    "fINny": "Hey there, what can I help you with?"
+    "FINny": "Hey there, what can I help you with?",
+    "authors": "I, FINny, am the result of the efforts of Akshara, Ethan, Mihika, and Shourish. They hope you found this site (prototype) helpful!"
 }
 
 # Conversation model
@@ -111,7 +112,7 @@ def chat():
     if session.get('chat_state') != scenario:
         session['chat_state'] = scenario
         session['conversation'] = []  # Reset the conversation when the scenario changes
-        return jsonify({'response': prompts.get(scenario, 'No prompt found for this scenario.')})
+        return jsonify({'response': prompts.get(scenario, 'Enter a valid prompt.')})
 
     user_input = message
     response = get_openai_response(user_input, scenario)
