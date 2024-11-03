@@ -3,7 +3,7 @@ import requests
 import logging
 from flask_sqlalchemy import SQLAlchemy
 from LoanCalculator import StudentInterestCalculator
-from Search import Search
+
  
 
 app = Flask(__name__)
@@ -54,31 +54,6 @@ def index():
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html') 
-@app.route('/search.html', methods=['GET', 'POST'])
-def search():
-    print("method ran")
-    if request.method == 'POST':
-        print("Starting scrape")
-        data = request.json
-        item = data['item']
-        features = data['features']
-
-        resource = Search(item)
-        soup = resource.get_data()
-        products = resource.parse(soup)
-        selectedProducts = []
-        
-        print("Parsing array ...")
-        for product in products:
-            for feature in features:
-                if feature.lower() in product['attributes']:
-                    selectedProducts.append(product)
-                    break
-        print("finished parsing file")
-        print(str(selectedProducts))
-    else:
-        print("error, method not post")
-    return render_template('search.html')
 
 @app.route('/student-calculator.html', methods=['GET', 'POST'])
 def student_calculator():
@@ -154,11 +129,6 @@ def chat():
     response = get_openai_response(user_input, scenario)
 
     return jsonify({'response': response})
-
-@app.route('/resources')
-def resources():
-    return render_template('resources.html')
-
 
 
 if __name__ == "__main__":

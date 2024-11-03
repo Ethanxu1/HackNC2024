@@ -45,7 +45,7 @@ class Search:
                 'title': title,
                 'price': price,
                 'link': link,
-                'attributes': str(attributes).lower
+                'attributes': str(attributes).lower()
             })
 
         return product_list
