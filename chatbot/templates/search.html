@@ -1,61 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Loan Calculator</title>
-</head>
-<body>
-    
-    <form id="resourcesForm" method="POST" action="/search.html">
-        <div class="input-field">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Student Loan Calculator</title>
+   </head>
+   <body>
+      <form id="resourcesForm" method="POST" action="/search.html">
+         <div class="input-field">
             <label for="item">Item: </label>
             <input type="text" id="item" name="item">    
-        </div>
-
-        <div class="input-field">
+         </div>
+         <div class="input-field">
             <label for="features">Key features (Be concise): </label>
             <input type="text" id="features" name="features">
             <button type="submit">Search</button> <!-- Use type="submit" to trigger form POST -->
-        </div>
-    </form>
-
-    <div id="output">
-        {{ output|safe }}
-    </div>
-    
-    <script>
-        document.getElementById("resourcesForm").addEventListener("submit", async function(event) {
-            event.preventDefault(); // Prevents normal form submission
-
-            const form = document.getElementById('resourcesForm');
-            const formData = new FormData(form);
-            const data = {
-                item: formData.get('item'), 
-                features: formData.get('features')
-            };
-            console.log(data['item']);
-            console.log(data['features']);
-            
-            // Sending POST request to the server
-            const response = await fetch('/search.html', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }, 
-                body: JSON.stringify(data)
-            });
-
-            // Handling response
-            const result = await response.text(); // Changed to text since we are returning HTML
-            const resultDiv = document.getElementById('output');     
-            
-            if (response.ok) {
-                resultDiv.innerHTML = result; // Display the entire rendered HTML response
-            } else {
-                resultDiv.innerHTML = `<p>Error: ${result}</p>`;
-            }
-        });
-    </script>
-</body>
+         </div>
+      </form>
+      <div id="output">
+         <div>
+            <h3>Preparing for Your ACS Examination in Organic Chemistry (the Official Guide)</h3>
+            <p>Price: $$10.00</p>
+            <a href='https://www.ebay.com/itm/296629803420?_skw=Organic+chemistry&hash=item451083999c:g:Y3wAAOSwg2hmu9yn&itmprp=enc%3AAQAJAAAA0HoV3kP08IDx%2BKZ9MfhVJKlZDWehDbBli5edZy3BAeGSks7Pvu9eALit%2F0hekGDxEt4vNJOy%2BxF9UCQLpw6CAo47Dn7KitU%2F3ZikNX6dy5xm6LZ4Eu%2FxvCbOMDDDBSFg8CWxCFCwzPCA59Afpl6sclCeUapLM37%2FFZ1itB8s%2Bxb%2FDgr7RL3LJkRM4Xlry34bC%2FNd1v7Xm%2FlzSuZgw7ben%2FDLosau9Vli3jAZaPNoEbWw%2FnouImNmEYGjkcrjggeWNq8DszyTOinnpmRSbBP8cgo%3D%7Ctkp%3ABk9SR5b3m6neZA'>View Product</a>
+         </div>
+         <div>
+            <h3>William H. Brown and Lawrence S. Brown Ser.: Organic Chemistry by Eric...</h3>
+            <p>Price: $$10.00</p>
+            <a href='https://www.ebay.com/itm/335553989176?_skw=Organic+chemistry&epid=25038433595&hash=item4e20938a38:g:MU4AAOSwI8dm0Wk9&itmprp=enc%3AAQAJAAAA8HoV3kP08IDx%2BKZ9MfhVJKkSJYUiOUxYt%2BkigzCjZjJVLlKdVCY%2Bmz8iYH%2FlBSnAcEuovmthzAFOe3f%2BCe3NYFMmc7M3HHi5kiCISE1NxHP8nlJUvvAFYYUlqzCOxLxBOTlNFG2MlaiId4Tp9BhQ5vyOsLBJ%2Fk%2FixfuVjxUiFXaSiFQwBc50f9pLY9aL%2BDy5MrmiTODuizxFC84osOoYuNtH%2FE0uqaJgmKnfc%2BteEpLyMpDm0cpoTdbZyDXpax66ZBTYnSeaUu8t%2FUaBIhnw8VpAbLcAkbyQOi0QUgA6d8IkeZsOHKsdPbJ%2F8Cyx3ClsvQ%3D%3D%7Ctkp%3ABFBMlvebqd5k'>View Product</a>
+         </div>
+         <div>
+            <h3>Organic Chemistry by Brent L. Iverson, William H. Brown, Eric Anslyn and...</h3>
+            <p>Price: $$10.00</p>
+            <a href='https://www.ebay.com/itm/335301633209?_skw=Organic+chemistry&epid=215171771&hash=item4e1188e4b9:g:QTkAAOSwpyVl8fPz&itmprp=enc%3AAQAJAAAA8HoV3kP08IDx%2BKZ9MfhVJKlbgedlt2h2nTlgGY0uuayGaKfsEFGCyuCTi6tY7F%2BF0Y3mNOzzBiDzW%2BX%2Bu8nTv6Mq%2F42NRqn6DJ%2FyJ4%2B1wRl8oQxUJvFlj3xW8lIqqNPkWEs9rnpGDHDAOyuLWqdw7aeKMAiUR2i45%2BUfHleKbhOwRHLUmDH6Qp0iBBtCF%2Fczo9sg67KSlDPlx7UWiLOpSvzN%2BaaE9CwgjSdSM6pIN5hBL8uvk1DmIGAp%2BmR4qx8bHjgtoo3BDKOgD4a8BtNM3DVLPd%2BBnkU6GawwnJGXZPzVo9RROCeKhCCVJgtgFIfOyw%3D%3D%7Ctkp%3ABk9SR5j3m6neZA'>View Product</a>
+         </div>
+         <div>
+            <h3>Organic Chemistry by Robert M. Giuliano and Francis A. Carey (2016, Hardcover)</h3>
+            <p>Price: $$10.30</p>
+            <a href='https://www.ebay.com/itm/405273249812?_skw=Organic+chemistry&epid=219515068&hash=item5e5c2b0814:g:Ma4AAOSwG2JmyMVF&itmprp=enc%3AAQAJAAAA8HoV3kP08IDx%2BKZ9MfhVJKmxHmD6udHZGw0QOcJg306kSmmsEoa2nWMV%2BMYVsIqzrEc9pus1DC3zuBRV7pzkraUHKUXmLhw6OUVXNgU%2B9i44rxq1vHoIWWfydefa5VWvp%2BGSvdq0Mgxqp%2B10FocktJmyH%2FcfugVhG8Wsy5YdZwFC0PUiuoexh5e7ZZxkDrsCV1%2B%2BrsBMs%2BKMpXD4PcFoqnjoO2xf2b7IsYUzL68EnvDaEVG0UHXBhZGV59ngNMIt4JRRNQ4ZGBdTWikq6MzVHcZ3b4U0DJlDPNULWecYTMWj1%2Fiz%2FR80Cm3CZfaasTKI3g%3D%3D%7Ctkp%3ABFBMlvebqd5k'>View Product</a>
+         </div>
+         <div>
+            <h3>Organic Chemistry (8th Edition) - Hardcover By L G Wade Jr - GOOD</h3>
+            <p>Price: $$10.50</p>
+            <a href='https://www.ebay.com/itm/256095551090?_skw=Organic+chemistry&epid=110967667&hash=item3ba07bfe72:g:zgMAAOSwOYxkeDa3&itmprp=enc%3AAQAJAAAA0HoV3kP08IDx%2BKZ9MfhVJKkcJMAWeM0YF8OVh2HTETc2gYH0sc9mmQbXpyBtPvM7u2teRKPvUmuoiE2VrMwk%2BbDuitTHVkW9gEP1zuZH%2BM5Q8GxfhpKK5QklLBUd9Ven41iSnsbh69ml31XSNd%2FMJH5s6D8Q44w6Q9Ffe2tqlzbM4fUfADWEA0V%2FXECbslNbyGwQZwhGMdGKCZV%2FpavsZBo3AdZ3OUK3dJg3EDXkl4Hfzax91rxtloeqP1zBrF%2BVs9iDdNIsNdieHzxt3zjoBBM%3D%7Ctkp%3ABk9SR5r3m6neZA'>View Product</a>
+         </div>
+      </div>
+      <script>
+         document.getElementById("resourcesForm").addEventListener("submit", async function(event) {
+             event.preventDefault(); // Prevents normal form submission
+         
+             const form = document.getElementById('resourcesForm');
+             const formData = new FormData(form);
+             const data = {
+                 item: formData.get('item'), 
+                 features: formData.get('features')
+             };
+             console.log(data['item']);
+             console.log(data['features']);
+             
+             // Sending POST request to the server
+             const response = await fetch('/search.html', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json'
+                 }, 
+                 body: JSON.stringify(data)
+             });
+         
+             // Handling response
+             const result = await response.text(); // Changed to text since we are returning HTML
+             const resultDiv = document.getElementById('output');     
+             
+             if (response.ok) {
+                 resultDiv.innerHTML = result; // Display the entire rendered HTML response
+             } else {
+                 resultDiv.innerHTML = `<p>Error: ${result}</p>`;
+             }
+         });
+      </script>
+   </body>
 </html>
