@@ -32,7 +32,6 @@
         async function calculateLoan() {
             const form = document.getElementById('calculatorForm');
             const formData = new FormData(form);
-
             const data = {
                 principal: formData.get('principal'),
                 disposable_income: formData.get('disposable_income'),
@@ -41,16 +40,17 @@
                 number_of_months: formData.get('number_of_months')
             };
 
-            const response = await fetch('/student_calculator', {
+            const response = await fetch('/student-calculator.html', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
-
+            
             const result = await response.json();
             const resultDiv = document.getElementById('result');
+            console.log("checkpoint reached ---------------------------------");
 
             if (response.ok) {
                 resultDiv.innerHTML = `<p>Monthly Payment: $${result.monthly_payment.toFixed(2)}</p>
