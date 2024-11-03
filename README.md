@@ -15,10 +15,10 @@ How to run the code:
 run app.py 
 
 dependancies:
-flask
-requests
-logging
-flask_sqlalchemy
+flask,
+requests,
+logging,
+flask_sqlalchemy,
 bs4
 Our Usage:
 
