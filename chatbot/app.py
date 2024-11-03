@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify, render_template, session, redirect, u
 import requests
 import logging
 from flask_sqlalchemy import SQLAlchemy
-import json
 from LoanCalculator import StudentInterestCalculator
 
  

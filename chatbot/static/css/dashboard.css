@@ -45,14 +45,12 @@ body {
     border-radius: 1.5em;
     padding: 20px;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-    /*display: flex;
-    flex-direction: column;*/
     height: 90%;
     overflow-y: auto;
 }
 
 .sidebar h1 {
-    color: #93c2e3;
+    color: #2e7aaf;
     font-size: 25px;
     margin-bottom: 10px;
 }
@@ -88,11 +86,11 @@ body {
 .form-control {
     width: 100%;
     padding: 10px;
-    border: 2px solid rgba(39, 174, 96, 0.1);
+    border: 2px solid rgba(69, 112, 139, 0.1);
     border-radius: 20px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
-    background: rgba(39, 174, 96, 0.04);
+    background: rgba(69, 112, 139, 0.1);
 }
 
 .chatbox {
@@ -123,18 +121,18 @@ body {
 textarea {
     flex: 1;
     padding: 10px;
-    border: 2px solid rgba(39, 174, 96, 0.1);
+    border: 2px solid rgba(69, 112, 139, 0.1);
     border-radius: 20px;
     resize: none;
     font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
-    background: rgba(39, 174, 96, 0.04);
+    background: rgba(69, 112, 139, 0.04);
 }
 
 .btn {
     margin-left: 10px;
     padding: 10px 20px;
-    background-color: #93c2e3;
+    background-color: #4295ce;
     color: #fff;
     border: none;
     border-radius: 20px;
@@ -146,13 +144,13 @@ textarea {
 }
 
 .btn:hover {
-    background-color: #2ecc71;
+    background-color: #153850
 }
 
 .sidebar .btn {
     display: inline-block; /* Allows padding and margins to apply */
     padding: 10px 15px; /* Button padding */
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #2e7aaf; /* Bootstrap primary color */
     color: white; /* Text color */
     text-align: center; /* Center text */
     border-radius: 5px; /* Rounded corners */
@@ -161,7 +159,7 @@ textarea {
 }
 
 .sidebar .btn:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: #153850; /* Darker Carolina Blue on Hover */
 }
 
 
