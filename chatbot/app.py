@@ -4,15 +4,17 @@ import logging
 from flask_sqlalchemy import SQLAlchemy
 from LoanCalculator import StudentInterestCalculator
 from Search import Search
- 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
 
-# Your OpenAI API key
-api_key = "sk-proj-7bLYALOdq524pvA9UQ4sT3BlbkFJoGws4ktP1CQljV0d0OQ5"
+api_key = os.getenv('OPENAI_KEY')
 
 
 # Define detailed prompts for assisting a wealth manager with clients
