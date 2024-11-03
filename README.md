@@ -11,6 +11,15 @@ Project idea: A UNC Student’s guide to finance
 - [ ]  Student discounts (discounts)
 - [ ]  Budgeting/ Financial goal setting (budgeting)
 
+How to run the code:
+run app.py 
+
+dependancies:
+flask
+requests
+logging
+flask_sqlalchemy
+bs4
 
 Our Usage:
 
