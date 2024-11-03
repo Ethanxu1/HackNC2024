@@ -54,10 +54,12 @@ def index():
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html') 
+
 @app.route('/search.html', methods=['GET', 'POST'])
 def search():
-    print("method ran")
     if request.method == 'POST':
+        print("method ran")
+        
         print("Starting scrape")
         data = request.json
         item = data['item']
@@ -75,9 +77,20 @@ def search():
                     selectedProducts.append(product)
                     break
         print("finished parsing file")
-        print(str(selectedProducts))
+        # Sort selected products by price and get the top 5 lowest cost items
+        top_5_products = sorted(selectedProducts, key=lambda x: x['price'])[:5]
+
+        # Prepare the results to be rendered in the HTML div with id "output"
+        output_html = ""
+        for product in top_5_products:
+            output_html += f"<div><h3>{product['title']}</h3><p>Price: ${product['price']}</p><a href='{product['link']}'>View Product</a></div>"
+        print(output_html)
+        return render_template('/search.html', output=output_html)
+
+
     else:
         print("error, method not post")
+
     return render_template('search.html')
 
 @app.route('/student-calculator.html', methods=['GET', 'POST'])

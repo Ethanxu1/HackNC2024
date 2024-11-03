@@ -7,7 +7,7 @@
 </head>
 <body>
     
-    <form id="resourcesForm">
+    <form id="resourcesForm" method="POST" action="/search.html">
         <div class="input-field">
             <label for="item">Item: </label>
             <input type="text" id="item" name="item">    
@@ -15,16 +15,19 @@
 
         <div class="input-field">
             <label for="features">Key features (Be concise): </label>
-            <input type="text", id="features" name="features">
-            <button type="button" onclick="search()">Search</button>
-            
+            <input type="text" id="features" name="features">
+            <button type="submit">Search</button> <!-- Use type="submit" to trigger form POST -->
         </div>
-
-        <div id="result"></div>
     </form>
+
+    <div id="output">
+        {{ output|safe }}
+    </div>
     
     <script>
-        async function search() {
+        document.getElementById("resourcesForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevents normal form submission
+
             const form = document.getElementById('resourcesForm');
             const formData = new FormData(form);
             const data = {
@@ -33,6 +36,8 @@
             };
             console.log(data['item']);
             console.log(data['features']);
+            
+            // Sending POST request to the server
             const response = await fetch('/search.html', {
                 method: 'POST',
                 headers: {
@@ -41,16 +46,16 @@
                 body: JSON.stringify(data)
             });
 
-            const result = await response.json();
-            const resultDiv = document.getElementById('result');     
+            // Handling response
+            const result = await response.text(); // Changed to text since we are returning HTML
+            const resultDiv = document.getElementById('output');     
             
             if (response.ok) {
-                resultDiv.innerHTML = `<p>Item Name: $${result.itemName}</p>
-                                       <p>Link: $${result.itemLink}</p>`;
+                resultDiv.innerHTML = result; // Display the entire rendered HTML response
             } else {
-                resultDiv.innerHTML = `<p>Error: ${result.error}</p>`;
+                resultDiv.innerHTML = `<p>Error: ${result}</p>`;
             }
-        }
+        });
     </script>
 </body>
 </html>
